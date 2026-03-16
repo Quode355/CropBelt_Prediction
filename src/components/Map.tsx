@@ -17,10 +17,13 @@ interface MapProps {
   selectedYear?: number;
 }
 
-// 裁剪后的TIF边界（中国陆地范围）
+// 裁剪后的TIF边界 + 偏移（整体偏右偏上时：往西、往南移）
+// 偏右 → 经度减；偏上 → 纬度减
+const OFFSET_LON = 8   // 往西移约 8 度（大幅左移）
+const OFFSET_LAT = 0.8   // 往南移约 0.8 度
 const TIF_BOUNDS: L.LatLngBoundsExpression = [
-  [18.159892626118193, 97.52685646183363],  // 西南 [bottom, left]
-  [51.66130350595798, 135.08793377366635]   // 东北 [top, right]
+  [18.159892626118193 - OFFSET_LAT, 97.52685646183363 - OFFSET_LON],  // 西南
+  [51.66130350595798 - OFFSET_LAT, 135.08793377366635 - OFFSET_LON]   // 东北
 ]
 
 // 各作物的PNG图片映射（使用裁剪后的图片）
