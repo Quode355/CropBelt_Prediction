@@ -17,16 +17,16 @@ interface MapProps {
   selectedYear?: number;
 }
 
-// TIF边界 - 精确值
+// 裁剪后的TIF边界（中国陆地范围）
 const TIF_BOUNDS: L.LatLngBoundsExpression = [
-  [18.15935363694772, 97.52685646183363],  // 西南 [bottom, left]
-  [51.66130350595798, 135.08874225742207]   // 东北 [top, right]
+  [18.159892626118193, 97.52685646183363],  // 西南 [bottom, left]
+  [51.66130350595798, 135.08793377366635]   // 东北 [top, right]
 ]
 
-// 各作物的PNG图片映射（目前只有水稻1990年）
+// 各作物的PNG图片映射（使用裁剪后的图片）
 const CROP_MAP_URLS: { [key: string]: { [year: number]: string } } = {
   水稻: {
-    1990: 'data/rice_map.png',
+    1990: 'data/rice_map_clipped.png',
     // 其他年份可以继续添加
   }
 }
